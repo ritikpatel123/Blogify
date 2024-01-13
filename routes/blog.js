@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const Blog =require('../models/blog')
 const multer=require('multer')
+const Blog=require('../models/blog')
 const path=require('path')
 const router = Router();
 
@@ -15,7 +16,7 @@ const storage = multer.diskStorage({
     }
   })
   
-  
+
 const upload = multer({ storage: storage })
 
 router.get('/add-blog',(req,res)=>{
@@ -24,6 +25,7 @@ router.get('/add-blog',(req,res)=>{
         })
 
 })
+
 
 router.post('/',upload.single('coverImage'),async (req,res)=>{
     console.log(req.body)
@@ -40,6 +42,14 @@ router.post('/',upload.single('coverImage'),async (req,res)=>{
 
 })
 
+router.get('/blog:id', async (req,res)=>{
+  const id=req.params.id;
+  const blog= await Blog.findById(id);
+  res.render("blog",{
+    user:req.user,
+    blog:blog
+  })
+})
 
 
 

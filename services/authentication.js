@@ -11,7 +11,6 @@ const createTokenForUser=(user)=>{
     }
     const token=jwt.sign(payload,secret);
     return token;
-
 }
 
 const validateToken=(token)=>{
