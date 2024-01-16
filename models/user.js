@@ -62,6 +62,6 @@ userSchema.static("matchPasswordAndGenerateToken", async function (email,passwor
 
 }) 
 
-const User= model("users",userSchema)
+const User= model("user",userSchema)
 
 module.exports=User;
