@@ -28,9 +28,9 @@ router.get('/add-blog',(req,res)=>{
 
 
 router.post('/',upload.single('coverImage'),async (req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     const {title,body}=req.body;
-    console.log(req.file)
+    // console.log(req.file)
 
   const blog= await  Blog.create({
         title,
@@ -46,7 +46,7 @@ router.get('/:id', async(req,res)=>{
   const id=req.params.id;
   const blog= await Blog.findById(id).populate('createdBy');
   const comment=await Comment.find({blogId:id}).populate('createdBy');
-  console.log(blog)
+  // console.log(blog)
 
   res.render("blog",{
     user:req.user,
